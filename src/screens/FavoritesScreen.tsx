@@ -2,11 +2,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Header } from '../components/Header';
 import { Navigate } from '../components/Navigate';
 
-export default function ReadingNowScreen() {
+export default function FavoritesScreen() {
   return (
     <View style={[styles.screen]}>
-      <Header title="Читаю сейчас" />
-      <Text>Контент страницы "Читаю сейчас"</Text>
+      <Header title="Избранное" />
       <Navigate />
     </View>
   );

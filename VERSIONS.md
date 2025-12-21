@@ -19,3 +19,9 @@ npx expo install react-native-screens react-native-safe-area-context
 - Созданы экраны: **MainScreen.tsx**, **AllBooksScreen.tsx**, **ReadingNowScreen.tsx**
 
 - Почищен Header - будем переделывать
+
+# commit 3 (21.12)
+
+- Созданы 5 страниц
+- Создан Header
+- Создан navigate

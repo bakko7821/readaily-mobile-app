@@ -1,17 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import { Header } from './src/components/Header';
 import { useTheme } from './src/theme/useTheme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ReadingNowScreen from './src/screens/ReadingNowScreen';
-import AllBooksScreen from './src/screens/AllBooksScreen';
-import MainScreen from './src/screens/MainScreen';
+import LibraryScreen from './src/screens/LibraryScreen';
+import ChartsScreen from './src/screens/ChartsScreen';
+import FavoritesScreen from './src/screens/FavoritesScreen';
+import ReadingLaterScreen from './src/screens/ReadLaterScreen';
 
 export type RootStackParamList = {
   ReadingNow: undefined;
-  AllBooks: undefined;
-  Main: undefined;
+  ReadingLater: undefined;
+  Charts: undefined;
+  Favorites: undefined;
+  Library: undefined;
 };
 
 export default function App() {
@@ -24,13 +27,21 @@ export default function App() {
     <View style={[styles.body, { width, height, backgroundColor: colors.background }]}>
       <StatusBar style={'auto'} />
       <NavigationContainer>
-        <Stack.Navigator 
-          screenOptions={{ 
+        <Stack.Navigator
+          screenOptions={{
             headerShown: false,
-            contentStyle: {backgroundColor: colors.background }}}>
-          <Stack.Screen name="Main" component={MainScreen} />
+            contentStyle: { backgroundColor: colors.background },
+
+            // ✅ анимация перехода
+            animation: 'fade', // или 'fade', 'slide_from_bottom', 'none'
+            animationDuration: 300,        // (работает не во всех версиях одинаково)
+          }}
+        >
+          <Stack.Screen name="Favorites" component={FavoritesScreen} />
+          <Stack.Screen name="ReadingLater" component={ReadingLaterScreen} />
+          <Stack.Screen name="Library" component={LibraryScreen} />
           <Stack.Screen name="ReadingNow" component={ReadingNowScreen} />
-          <Stack.Screen name="AllBooks" component={AllBooksScreen} />
+          <Stack.Screen name="Charts" component={ChartsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
@@ -40,10 +51,8 @@ export default function App() {
 const styles = StyleSheet.create({
   body: {
     paddingTop: 40,
-    padding: 12,
+    padding: 0,
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'green'
   }
 });
 
